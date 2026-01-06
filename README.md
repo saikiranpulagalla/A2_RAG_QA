@@ -603,6 +603,7 @@ Avoids building a single massive index of pre-chunked documents.
 | **Decision Distribution** | N/A | 0% retrieval | N/A | Issue detected |
 
 ### Figure 1: F1 Score Comparison
+![F1 Score Comparison](results/01_quality_metrics.png)
 ```
         0.60 ┌────────────────────────────────────┐
              │                                    │
