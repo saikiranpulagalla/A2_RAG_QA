@@ -28,9 +28,7 @@ A research-grade GenAI system implementing advanced RAG techniques for knowledge
 17. [Visualization Files](#visualization-files)
 18. [Generated Documentation](#generated-documentation)
 19. [Contributing](#contributing)
-20. [Citation](#citation)
-21. [License](#license)
-22. [Support](#support)
+20. [Support](#support)
 
 ---
 
@@ -138,6 +136,19 @@ graph TD
     style G fill:#e8f5e9
     style H fill:#fff3e0
     style I fill:#c8e6c9
+    
+    %%{init: {
+  "theme": "default",
+  "flowchart": {
+    "nodeSpacing": 60,
+    "rankSpacing": 70,
+    "curve": "basis"
+  },
+  "themeVariables": {
+    "fontSize": "16px"
+  }
+}}%%
+
 ```
 
 ### Detailed Architecture
@@ -659,21 +670,21 @@ This improvement enables real-time interactive applications where response time 
                     ╱─────────╲
                    ╱           ╲  
                  ╱               ╲
-              45%                 55%
+              12%                 88%
             ╱                       ╲
            ╱                         ╲
         ┌──────────────────────────────┐
-        │     Skip (23 queries)        │
+        │     Skip (6 queries)        │
         │   Adaptive Decision ✓        │
         │                              │
         │        Retrieve              │
-        │     (27 queries)             │
+        │     (44 queries)             │
         │   Full retrieval when        │
         │   needed                     │
         └──────────────────────────────┘
 ```
 
-**Figure 3**: Distribution of retrieval decisions made by the adaptive decision module. The 45% skip rate demonstrates intelligent decision-making:
+**Figure 3**: Distribution of retrieval decisions made by the adaptive decision module. The 6% skip rate demonstrates intelligent decision-making:
 - **Confidence threshold**: 0.35 determines retrieval necessity
 - **Decision accuracy**: 73% correct skip/retrieve decisions
 - **Cost benefit**: Unnecessary retrievals eliminated, reducing API costs
@@ -907,31 +918,6 @@ def custom_metric(predicted_answer, gold_answer):
     # Your metric logic
     return score
 ```
-
----
-
-## Citation
-
-If you use A²-RAG in your research, please cite:
-
-```bibtex
-@misc{a2rag2024,
-  title={Adaptive & Agentic Retrieval-Augmented Generation for Knowledge-Intensive Question Answering},
-  author={Saikiran Pulagalla},
-  year={2024},
-  howpublished={GitHub},
-  url={https://github.com/saikiranpulagalla/A2_RAG_QA.git}
-}
-```
-
-Or inline citation:
-> Pulagalla, S. (2024). Adaptive & Agentic Retrieval-Augmented Generation for Knowledge-Intensive Question Answering. Retrieved from https://github.com/saikiranpulagalla/A2_RAG_QA
-
----
-
-## License
-
-MIT License - Feel free to use for academic and commercial purposes.
 
 ---
 
