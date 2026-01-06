@@ -1,0 +1,51 @@
+model,question,predicted_answer,ground_truth,EM,F1,Hit_Rate,retrieval_used,latency_sec
+A²-RAG,where does chicken pox live in the body,"After a chickenpox infection, the virus remains dormant in the body's nerve tissues.",nerve tissues,0,0.3333,1,1,0.878
+A²-RAG,the persian gulf war began when iraq invaded what country,Kuwait,Kuwait,1,1.0000,1,1,0.603
+A²-RAG,soaking the jute plants in water is called,retting,retting,1,1.0000,0,0,1.379
+A²-RAG,who are the green bay packers owned by,The Green Bay Packers Board of Directors.,The Green Bay Packers Board of Directors,1,1.0000,1,1,0.694
+A²-RAG,who is the patron saint for lost causes,Saint Jude,Saint Jude the Apostle,0,0.8000,1,1,0.525
+A²-RAG,who sings lead vocals on aerosmith dream on,Steven Tyler,Steven Tyler,1,1.0000,1,1,0.587
+A²-RAG,who is on the cover of life of pablo,I cannot answer based on the provided context.,Sheniz H,0,0.0000,0,1,0.565
+A²-RAG,what country does the united states export the most product to,I cannot answer based on the provided context.,China,0,0.0000,1,1,0.615
+A²-RAG,where did the pittsburgh steelers get their name,"The Pittsburgh Steelers got their name from the ""Steelmark"" logo.","based on the ""Steelmark '', originally designed by Pittsburgh 's U.S",0,0.2353,1,1,0.600
+A²-RAG,when does episode 2 of star trek discovery come on,I cannot answer based on the provided context.,"September 24, 2017",0,0.0000,0,1,0.650
+A²-RAG,where was paper planes filmed in western australia,"Gidgegannup, Baldivis, Challenge Stadium, Whiteman Park, Perth Zoo, and the Aviation Heritage Museum in Bull Creek.",at an abandoned school in Gidgegannup,0,0.2000,1,1,0.914
+A²-RAG,visual signs of spoilage for fruits and vegetables,"Some visual signs of spoilage for fruits and vegetables include mold growth, discoloration, shriveling, soft spots, and a slimy texture",change in color,0,0.0000,0,0,1.822
+A²-RAG,how many fans fit in penn state stadium hold,"106,572","106,572",1,1.0000,1,1,1.685
+A²-RAG,who sang lead vocals on go your own way,Lindsey Buckingham,Lindsey Buckingham,1,1.0000,1,1,0.671
+A²-RAG,generates the byte code for a given file with .java extension,The Java compiler (javac) generates the byte code for a given file with a .java extension.,the Java virtual machine (JVM),0,0.1333,0,0,1.929
+A²-RAG,where did the attack on pearl harbor occur,"Pearl Harbor, Hawaii Territory","the United States naval base at Pearl Harbor, Hawaii Territory",0,0.6154,1,1,0.640
+A²-RAG,when did bob dylan wrote knockin on heavens door,February 1973,"July 13, 1973",0,0.4000,1,1,0.683
+A²-RAG,when did australia qualify for the world cup,"Australia qualified for the FIFA World Cup in 1974, 2006, 2010, and 2014.",1974,0,0.1538,1,1,0.704
+A²-RAG,anatomical structure that is part of both the digestive and respiratory systems,The pharynx is an anatomical structure that is part of both the digestive and respiratory systems,the pharynx,0,0.1538,0,0,1.833
+A²-RAG,when did the last recession began and end,The recession began in December 2007 and ended in June 2009.,began in December 2007 and ended in June 2009,0,0.9412,1,1,0.699
+A²-RAG,what is another term for persistent vegetative state,unresponsive wakefulness syndrome,unresponsive wakefulness syndrome,1,1.0000,1,1,0.640
+A²-RAG,who sang i dont care i love it,"Icona Pop featuring Charli XCX sang ""I Love It.""",Icona Pop,0,0.3636,1,1,0.704
+A²-RAG,who is the queen of the jungle animal,Sheena,monkey,0,0.0000,1,1,0.559
+A²-RAG,who played the twins in miss peregrine's home,I cannot answer based on the provided context.,Joseph and Thomas Odwell,0,0.0000,0,1,1.046
+A²-RAG,when was the last easter fell on april 1st,2018,2018,1,1.0000,1,1,0.593
+A²-RAG,who won season 17 of america's next top model,I cannot answer based on the provided context.,30 - year - old Lisa D'Amato,0,0.0000,1,1,0.964
+A²-RAG,who was the shooter at columbine high school,Eric Harris and Dylan Klebold.,Eric Harris,0,0.5714,1,1,0.624
+A²-RAG,when did the kings of comedy come out,"The film was shot over the last two nights (February 26 and 27, 2000) of the Kings of Comedy tour with Harvey, Hughley, Cedric, and Mac.",2000,0,0.0000,1,1,0.965
+A²-RAG,who played michael jackson in the jackson 5 american dream,"Alex Burrall, Jason Weaver, and Wylie Draper played Michael Jackson in different eras.",Wylie Draper,0,0.2667,1,1,0.836
+A²-RAG,when was last time england was in semi final of world cup,2018,2018,1,1.0000,1,1,0.563
+A²-RAG,what type of social movement is occupy wall street,A protest movement.,protest movement,1,1.0000,1,1,0.626
+A²-RAG,what does a lysosome look like in an animal cell,"They described this membrane - like barrier as a ""saclike structure surrounded by a membrane and containing acid phosphatase.""","a ""saclike structure surrounded by a membrane and containing acid phosphatase",0,0.7200,1,1,1.026
+A²-RAG,who did the first double backflip on a dirt bike,Travis Pastrana,Travis Pastrana,1,1.0000,1,1,0.627
+A²-RAG,what type of symmetry does a sea star have,Radial symmetry,radial symmetry,1,1.0000,1,1,0.635
+A²-RAG,what is the average lifespan of a newfoundland,I cannot answer based on the provided context.,-- 10 years (,0,0.0000,1,1,0.813
+A²-RAG,who forms the major segment of audience for mtv music videos,"According to MTV's self-conducted research, over 50% of its audience is between twelve and twenty-four years old.",between the ages of twelve to thirty - four.,0,0.3200,1,1,0.824
+A²-RAG,what is the meaning of el condor pasa,"El Cóndor Pasa means ""The Condor Passes"" in Spanish.",The Condor Passes,0,0.4000,1,1,0.722
+A²-RAG,the british introduced which disease to the native american tribes after the french and indian war,smallpox,smallpox,1,1.0000,1,1,0.597
+A²-RAG,the first department of sociology in the united states was established at,The first department of sociology in the United States was established at the University of Chicago in 1892 by Albion Small.,the University of Kansas,0,0.2105,0,0,1.768
+A²-RAG,who came in second on the voice season 14,Britton Buchanan,Britton Buchanan,1,1.0000,1,1,0.627
+A²-RAG,who plays benny blanco in carlito's way,John Leguizamo,John Leguizamo,1,1.0000,1,1,0.595
+A²-RAG,who wrote fantasy by earth wind and fire,"Maurice White, Verdine White, and Eddie del Barrio",Maurice White,0,0.4444,1,1,0.667
+A²-RAG,who wrote the occurrence at owl creek bridge,Ambrose Bierce,Ambrose Bierce,1,1.0000,1,1,0.577
+A²-RAG,where did the shape of numbers come from,"Arabic numerals, also called Hindu-Arabic numerals, are descended from the Hindu-Arabic numeral system developed by ancient Indian mathematicians around 500 CE.",the Hindu - Arabic numeral system developed by ancient Indian mathematicians around 500 CE,0,0.7097,1,1,1.096
+A²-RAG,where was the movie pink cadillac filmed at,I cannot answer based on the provided context.,in Utah and Nevada,0,0.0000,0,1,0.594
+A²-RAG,green color in indian flag is a symbol of,"The green color in the Indian flag is a symbol of faith, fertility, and prosperity.","relation to the plant life here, on which all other life depends",0,0.0000,0,0,1.807
+A²-RAG,where was cecil b demille's ten commandments filmed,"Filmed on location in Egypt, Mount Sinai and the Sinai Peninsula.",Egypt,0,0.2000,1,1,0.704
+A²-RAG,who was in series 1 of safe house,I cannot answer based on the provided context.,Marsha Thomason as Katy Carmichael,0,0.0000,0,1,0.711
+A²-RAG,what was the first dlc expansion for ark,Scorched Earth,Scorched Earth,1,1.0000,1,1,0.587
+A²-RAG,what type of music is where is the love,Conscious hip hop pop soul,Conscious hip hop,0,0.7500,1,1,0.637

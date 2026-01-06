@@ -1,0 +1,18 @@
+{
+  "Baseline": {
+    "em": 0.0,
+    "f1": 0.004347826086956523,
+    "hit_rate": 0.0,
+    "avg_latency": 0.405505108833313,
+    "avg_num_queries": 1.0,
+    "num_examples": 20
+  },
+  "A\u00b2-RAG": {
+    "em": 0.0,
+    "f1": 0.004761904761904762,
+    "hit_rate": 0.0,
+    "avg_latency": 0.48689175844192506,
+    "avg_num_queries": 0.0,
+    "num_examples": 20
+  }
+}

@@ -1,0 +1,57 @@
+================================================================================
+A²-RAG (Adaptive & Agentic Retrieval-Augmented Generation)
+Evaluation Summary Report
+================================================================================
+
+METRIC DEFINITIONS
+--------------------------------------------------------------------------------
+1. EM (Exact Match):
+   - Binary metric: 1 if prediction exactly matches reference, 0 otherwise
+   - CAVEAT: NQ answers are often short spans; EM is inherently strict
+   - Low EM scores are expected and normal for open-domain QA
+
+2. F1 (Token-Level Overlap):
+   - Measures token-level recall and precision
+   - PRIMARY METRIC for Natural Questions dataset evaluation
+   - Rewards partial correct answers with shared key terms
+   - More interpretable than EM for academic comparison
+
+3. Hit Rate:
+   - Measures if the correct answer appears in retrieved context
+   - Reflects retrieval quality: did RAG find relevant documents?
+   - Important for understanding retrieval effectiveness
+
+4. Avg Latency:
+   - Average time per query in seconds
+   - Includes LLM inference, retrieval, and decision-making
+   - A²-RAG typically slower due to decision overhead
+
+5. Avg Num Queries:
+   - Average API calls per query (decision LLM + generation LLM)
+   - A²-RAG efficiency: skipped retrieval = fewer queries
+   - Key metric for understanding cost/quota savings
+
+EVALUATION RESULTS
+--------------------------------------------------------------------------------
+
+Baseline:
+  EM (Exact Match):           0.3800
+  F1 (Token Overlap):         0.5607
+  Hit Rate (Retrieval):       0.0000
+  Avg Latency:                0.678s
+  Avg API Calls per Query:    1.00
+  Total Examples Evaluated:   50
+
+A²-RAG:
+  EM (Exact Match):           0.3200
+  F1 (Token Overlap):         0.4957
+  Hit Rate (Retrieval):       0.7800
+  Avg Latency:                0.733s
+  Avg API Calls per Query:    3.76
+  Total Examples Evaluated:   50
+
+
+PERFORMANCE ANALYSIS & TRADE-OFFS
+--------------------------------------------------------------------------------
+
+1. QUALITY METRICS (F1 is primary):

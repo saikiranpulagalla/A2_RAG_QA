@@ -1,0 +1,51 @@
+model,question,predicted_answer,ground_truth,EM,F1,Hit_Rate,retrieval_used,latency_sec
+Baseline,where does chicken pox live in the body,nerve tissues,nerve tissues,1,1.0000,0,0,0.955
+Baseline,the persian gulf war began when iraq invaded what country,Kuwait,Kuwait,1,1.0000,0,0,0.488
+Baseline,soaking the jute plants in water is called,retting,retting,1,1.0000,0,0,0.512
+Baseline,who are the green bay packers owned by,The Green Bay Packers Board of Directors.,The Green Bay Packers Board of Directors,1,1.0000,0,0,0.559
+Baseline,who is the patron saint for lost causes,Saint Jude the Apostle,Saint Jude the Apostle,1,1.0000,0,0,0.659
+Baseline,who sings lead vocals on aerosmith dream on,Steven Tyler,Steven Tyler,1,1.0000,0,0,0.466
+Baseline,who is on the cover of life of pablo,I cannot answer based on the provided context.,Sheniz H,0,0.0000,0,0,0.641
+Baseline,what country does the united states export the most product to,I cannot answer based on the provided context.,China,0,0.0000,0,0,0.617
+Baseline,where did the pittsburgh steelers get their name,The Pittsburgh Steelers got their name from the steel industry.,"based on the ""Steelmark '', originally designed by Pittsburgh 's U.S",0,0.1176,0,0,0.616
+Baseline,when does episode 2 of star trek discovery come on,I cannot answer based on the provided context.,"September 24, 2017",0,0.0000,0,0,0.870
+Baseline,where was paper planes filmed in western australia,"Gidgegannup, Baldivis, Challenge Stadium, Whiteman Park, Perth Zoo, and the Aviation Heritage Museum in Bull Creek.",at an abandoned school in Gidgegannup,0,0.2000,0,0,0.992
+Baseline,visual signs of spoilage for fruits and vegetables,"Signs of food spoilage may include an appearance different from the food in its fresh form, such as a change in color, a change in texture, an unpleasant odor, or an undesirable taste.",change in color,0,0.2308,0,0,0.767
+Baseline,how many fans fit in penn state stadium hold,"106,572 fans.","106,572",0,0.6667,0,0,0.613
+Baseline,who sang lead vocals on go your own way,Lindsey Buckingham,Lindsey Buckingham,1,1.0000,0,0,0.467
+Baseline,generates the byte code for a given file with .java extension,I cannot answer based on the provided context.,the Java virtual machine (JVM),0,0.0000,0,0,0.950
+Baseline,where did the attack on pearl harbor occur,"Pearl Harbor, Hawaii Territory","the United States naval base at Pearl Harbor, Hawaii Territory",0,0.6154,0,0,0.539
+Baseline,when did bob dylan wrote knockin on heavens door,February 1973,"July 13, 1973",0,0.4000,0,0,0.643
+Baseline,when did australia qualify for the world cup,"Australia qualified for the FIFA World Cup in 1974, 2006, 2010, and 2014.",1974,0,0.1538,0,0,0.700
+Baseline,anatomical structure that is part of both the digestive and respiratory systems,Pharynx,the pharynx,1,1.0000,0,0,0.517
+Baseline,when did the last recession began and end,The recession began in December 2007 and ended in June 2009.,began in December 2007 and ended in June 2009,0,0.9412,0,0,0.601
+Baseline,what is another term for persistent vegetative state,Unresponsive wakefulness syndrome,unresponsive wakefulness syndrome,1,1.0000,0,0,0.548
+Baseline,who sang i dont care i love it,"Icona Pop featuring Charli XCX sang ""I Love It.""",Icona Pop,0,0.3636,0,0,0.590
+Baseline,who is the queen of the jungle animal,Sheena,monkey,0,0.0000,0,0,0.442
+Baseline,who played the twins in miss peregrine's home,I cannot answer based on the provided context.,Joseph and Thomas Odwell,0,0.0000,0,0,0.523
+Baseline,when was the last easter fell on april 1st,2018,2018,1,1.0000,0,0,0.517
+Baseline,who won season 17 of america's next top model,I cannot answer based on the provided context.,30 - year - old Lisa D'Amato,0,0.0000,0,0,0.712
+Baseline,who was the shooter at columbine high school,Eric Harris and Dylan Klebold,Eric Harris,0,0.5714,0,0,0.543
+Baseline,when did the kings of comedy come out,"The film was shot over the last two nights (February 26 and 27, 2000) of the Kings of Comedy tour with Harvey, Hughley, Cedric, and Mac.",2000,0,0.0000,0,0,0.882
+Baseline,who played michael jackson in the jackson 5 american dream,"Alex Burrall, Jason Weaver, and Wylie Draper played Michael Jackson in different eras.",Wylie Draper,0,0.2667,0,0,0.715
+Baseline,when was last time england was in semi final of world cup,2018,2018,1,1.0000,0,0,0.479
+Baseline,what type of social movement is occupy wall street,A protest movement.,protest movement,1,1.0000,0,0,0.497
+Baseline,what does a lysosome look like in an animal cell,"They described this membrane - like barrier as a ""saclike structure surrounded by a membrane and containing acid phosphatase.''","a ""saclike structure surrounded by a membrane and containing acid phosphatase",0,0.7200,0,0,0.810
+Baseline,who did the first double backflip on a dirt bike,Travis Pastrana,Travis Pastrana,1,1.0000,0,0,0.497
+Baseline,what type of symmetry does a sea star have,Radial symmetry.,radial symmetry,1,1.0000,0,0,0.574
+Baseline,what is the average lifespan of a newfoundland,I cannot answer based on the provided context.,-- 10 years (,0,0.0000,0,0,0.590
+Baseline,who forms the major segment of audience for mtv music videos,"According to MTV's self-conducted research, over 50% of its audience is between twelve and twenty-four years old.",between the ages of twelve to thirty - four.,0,0.3200,0,0,0.660
+Baseline,what is the meaning of el condor pasa,"El Cóndor Pasa means ""The Condor Passes"" in Spanish.",The Condor Passes,0,0.4000,0,0,0.735
+Baseline,the british introduced which disease to the native american tribes after the french and indian war,smallpox,smallpox,1,1.0000,0,0,0.488
+Baseline,the first department of sociology in the united states was established at,the University of Chicago,the University of Kansas,0,0.6667,0,0,0.605
+Baseline,who came in second on the voice season 14,Britton Buchanan,Britton Buchanan,1,1.0000,0,0,0.532
+Baseline,who plays benny blanco in carlito's way,John Leguizamo,John Leguizamo,1,1.0000,0,0,0.535
+Baseline,who wrote fantasy by earth wind and fire,"Maurice White, Verdine White, and Eddie del Barrio",Maurice White,0,0.4444,0,0,0.683
+Baseline,who wrote the occurrence at owl creek bridge,Ambrose Bierce,Ambrose Bierce,1,1.0000,0,0,0.541
+Baseline,where did the shape of numbers come from,They are descended from the Hindu - Arabic numeral system developed by ancient Indian mathematicians around 500 CE.,the Hindu - Arabic numeral system developed by ancient Indian mathematicians around 500 CE,0,0.8667,0,0,0.905
+Baseline,where was the movie pink cadillac filmed at,I cannot answer based on the provided context.,in Utah and Nevada,0,0.0000,0,0,0.628
+Baseline,green color in indian flag is a symbol of,"Our relation to the soil, our relation to the plant life here, on which all other life depends.","relation to the plant life here, on which all other life depends",0,0.9091,0,0,0.761
+Baseline,where was cecil b demille's ten commandments filmed,"Egypt, Mount Sinai, and the Sinai Peninsula",Egypt,0,0.3333,0,0,0.779
+Baseline,who was in series 1 of safe house,I cannot answer based on the provided context.,Marsha Thomason as Katy Carmichael,0,0.0000,0,0,0.644
+Baseline,what was the first dlc expansion for ark,Scorched Earth,Scorched Earth,1,1.0000,0,0,0.595
+Baseline,what type of music is where is the love,Conscious hip hop pop soul,Conscious hip hop,0,0.7500,0,0,0.615
