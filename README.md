@@ -2,8 +2,6 @@
 
 A research-grade GenAI system implementing advanced RAG techniques for knowledge-intensive Question Answering.
 
-**Designed for**: Academic assignment submission, portfolio/resume use, and interview discussions.
-
 📍 **GitHub Repository**: [saikiranpulagalla/A2_RAG_QA](https://github.com/saikiranpulagalla/A2_RAG_QA.git)
 
 ---
