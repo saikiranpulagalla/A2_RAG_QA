@@ -1,0 +1,13 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 140
+exclude = [".cache", "__pycache__", ".pytest_cache", ".ruff_cache", "historical"]
+
+[tool.ruff.lint]
+# Catch undefined names, stale imports, and other high-signal Python failures.
+select = ["E9", "F"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = [".cache", "__pycache__", ".pytest_cache", ".ruff_cache", "historical"]
+addopts = "-p no:cacheprovider -p no:langsmith_plugin --import-mode=importlib"

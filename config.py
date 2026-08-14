@@ -1,130 +1,116 @@
 """
-Configuration module for A²-RAG (Adaptive & Agentic Retrieval-Augmented Generation).
+Central configuration for A2-RAG.
 
-Centralizes all hyperparameters and model configurations for both Baseline RAG and A²-RAG systems.
-Ensures reproducibility and easy tuning of key parameters.
-
-Key Sections:
-- LLM & Embedding Models
-- Chunking Parameters
-- Retrieval Parameters
-- Evaluation Metrics
-- System Behavior Flags
+The defaults are chosen to make the project runnable on a laptop without paid
+embedding calls: local HuggingFace embeddings are preferred, while LLMs use
+OpenRouter/Gemini/OpenAI only when the relevant keys are present.
 """
 
-# ============================================================================
-# LLM & EMBEDDING MODEL CONFIGURATION
-# ============================================================================
-# Models used for both systems. Update these to switch providers/versions.
-EMBEDDING_MODEL = "text-embedding-3-small"  # OpenAI embedding model
-EMBEDDING_PROVIDER = "openai"  # "openai" only
-USE_OPENAI_EMBEDDINGS = True  # Use OpenAI embeddings
+# ---------------------------------------------------------------------------
+# Model providers
+# ---------------------------------------------------------------------------
+EMBEDDING_PROVIDER = "local"  # "local", "openai", or "google"
+ALLOW_EMBEDDING_PROVIDER_FALLBACK = False
+EMBEDDING_CACHE_MAX_VECTORS = 5000
+LOCAL_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+LOCAL_EMBEDDING_MODEL_REVISION = "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+OPENAI_EMBEDDING_MODEL = "text-embedding-3-small"
+GOOGLE_EMBEDDING_MODEL = "models/embedding-001"
+# Backward-compatible name used by older modules.
+EMBEDDING_MODEL = OPENAI_EMBEDDING_MODEL
 
-# LLM Strategy: Optimize cost + quality using OpenRouter
-# Primary: OpenRouter (openai/gpt-3.5-turbo) - cost-effective, multi-provider routing
-# Fallback: Direct OpenAI (gpt-3.5-turbo) - backup if OpenRouter unavailable
-DECISION_LLM_MODEL = "openai/gpt-3.5-turbo"  # Decision module via OpenRouter
-LLM_MODEL = "openai/gpt-3.5-turbo"  # Generation model via OpenRouter
-FALLBACK_LLM_MODEL = "gpt-3.5-turbo"  # Fallback: Direct OpenAI API
-USE_FALLBACK_MODEL = False  # Disable fallback (OpenRouter is primary)
-MAX_TOKENS = 512  # Max tokens for LLM response (limited to prevent quota issues)
+USE_OPENROUTER = True
+OPENROUTER_MODEL = "openai/gpt-4o-mini"
+OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 
-# ============================================================================
-# RETRY & QUOTA RESILIENCE
-# ============================================================================
-MAX_RETRIES = 3  # Max retry attempts for API calls
-RETRY_BACKOFF_SECONDS = 5  # Initial backoff time before retry (increases exponentially)
-QUOTA_WAIT_SECONDS = 60  # Wait time when quota exceeded error detected
+GEMINI_MODEL = "gemini-1.5-flash"
+OPENAI_MODEL = "gpt-4o-mini"
+DECISION_LLM_MODEL = OPENROUTER_MODEL
+# Backward-compatible configuration name. Pipelines pass ``None`` so the
+# provider factory selects a provider-compatible generation model.
+LLM_MODEL = None
+FALLBACK_LLM_MODEL = OPENAI_MODEL
+USE_FALLBACK_MODEL = True
+MAX_TOKENS = 256
+LLM_TIMEOUT_SECONDS = 30
+LLM_CIRCUIT_BREAKER_FAILURES = 3
+LLM_CIRCUIT_BREAKER_RESET_SECONDS = 60
 
-# ============================================================================
-# CHUNKING PARAMETERS (Late Chunking in A²-RAG)
-# ============================================================================
-# Applied AFTER parent retrieval in A²-RAG to split retrieved documents into child chunks.
-# Not used in Baseline RAG (which chunks upfront - early chunking).
-CHUNK_SIZE = 512  # Characters per chunk. Smaller = more granular, larger = more context
-CHUNK_OVERLAP = 50  # Characters. Prevents loss of info at chunk boundaries
+# Optional OpenRouter ranking metadata. Leave empty for local/evaluation use.
+OPENROUTER_SITE_URL = ""
+OPENROUTER_APP_TITLE = "A2-RAG-QA"
 
-# ============================================================================
-# DOCUMENT CORPUS PARAMETERS
-# ============================================================================
-# Number of documents to load from Wikipedia for indexing.
-# Larger corpus improves hit rate and retrieval quality, but increases indexing time.
-# Available: 1000 documents in wiki_docs.json
-# Recommended range: 100-500 documents for good quality/speed balance
-NUM_DOCS = 300  # Number of documents to load (increased from 10 for better retrieval quality)
+# ---------------------------------------------------------------------------
+# Retry behavior
+# ---------------------------------------------------------------------------
+MAX_RETRIES = 2
+RETRY_BACKOFF_SECONDS = 3
+QUOTA_WAIT_SECONDS = 30
 
-# ============================================================================
-# RETRIEVAL PARAMETERS
-# ============================================================================
-# Top-K for both parent and child retrieval in A²-RAG.
-# Baseline RAG uses this for single-stage dense retrieval.
-# Reduced to 3 for token budget management (prevents 4096 token errors).
-TOP_K = 3  # Number of top documents/chunks to retrieve
-PARENT_K = 3  # Number of parent documents to retrieve (A²-RAG stage 1)
-CHILD_K = 3   # Number of child chunks from parents (A²-RAG stage 2)
+# ---------------------------------------------------------------------------
+# Retrieval and chunking
+# ---------------------------------------------------------------------------
+NUM_DOCS = 300
+TOP_K = 4
+PARENT_K = 4
+CHILD_K = 4
+CHUNK_SIZE = 512
+CHUNK_OVERLAP = 80
+# Parent documents are bounded before embedding so transformer truncation does
+# not make the tail of long corpus records invisible to parent retrieval.
+PARENT_CHUNK_SIZE = 1000
+PARENT_CHUNK_OVERLAP = 120
+MAX_PARENT_INDEX_CACHE = 4
+MAX_CONTEXT_CHARS = 4500
+ENABLE_CONTEXT_COMPRESSION = True
+MAX_CONTEXT_SENTENCES = 10
 
-# ============================================================================
-# AGENTIC DECISION PARAMETERS (A²-RAG Only)
-# ============================================================================
-# Thresholds for deciding whether retrieval is necessary.
-# Calibrated to maximize retrieval for factual questions while skipping opinion/reasoning-only.
-# TUNED: Lowered threshold from 0.5 to 0.35 for better medium-to-high confidence triggering
+# Lexical reranking adds a cheap BM25-like safety net over dense retrieval.
+ENABLE_LEXICAL_RERANK = True
+LEXICAL_RERANK_WEIGHT = 0.35
+MIN_RETRIEVAL_RELEVANCE = 0.02
 
-RETRIEVAL_DECISION_CONFIDENCE_THRESHOLD = 0.35  # Skip retrieval only if confidence < 0.35 (medium-to-high confidence triggers retrieval)
+# Hybrid retrieval and diversity control. Sparse retrieval improves exact-name,
+# acronym, number, and rare-term recall; diversity reduces duplicated context.
+ENABLE_SPARSE_RETRIEVAL = True
+ENABLE_MMR_DIVERSITY = True
+MMR_DIVERSITY_LAMBDA = 0.75
+MAX_QUERY_CHARS = 1000
+ENABLE_CORRECTIVE_RETRIEVAL = True
+CORRECTIVE_RETRY_MULTIPLIER = 2
+MAX_CORRECTIVE_VARIANTS = 6
 
-# Keywords that FORCE retrieval (factual, entity-based, definition, historical, medical)
+# Set A2_RAG_OFFLINE=1 to use a deterministic extractive local fallback when
+# no hosted LLM key is available. This is useful for demos/tests, not benchmark claims.
+ALLOW_OFFLINE_EXTRACTIVE_LLM = True
+
+# ---------------------------------------------------------------------------
+# Agentic decision thresholds
+# ---------------------------------------------------------------------------
+RETRIEVAL_DECISION_CONFIDENCE_THRESHOLD = 0.55
+HEURISTIC_DECISION_LOW = 0.35
+HEURISTIC_DECISION_HIGH = 0.70
+
 FORCE_RETRIEVAL_KEYWORDS = [
-    "where", "when", "who", "what", "which",  # WH-questions (factual)
-    "define", "definition",  # Definitions
-    "causes", "caused",  # Causation (factual/medical)
-    "lives in", "located in", "capital", "country",  # Entity locations
-    "born", "died", "year", "date",  # Historical facts
-    "disease", "symptom", "treatment", "medicine", "virus",  # Medical
-    "discovered", "invented", "created",  # Historical discovery
-    "author", "wrote", "published"  # Literary/historical
+    "latest", "current", "today", "yesterday", "tomorrow", "recent",
+    "when", "where", "who", "which", "what", "how many", "how much",
+    "date", "year", "born", "died", "capital", "country", "located",
+    "author", "wrote", "published", "invented", "discovered", "caused",
+    "causes", "symptom", "treatment", "medicine", "virus", "disease",
+    "according to", "source", "document", "paper", "report", "dataset",
 ]
 
-# Keywords that suggest SKIP retrieval (opinion, reasoning, conversational)
 SKIP_RETRIEVAL_KEYWORDS = [
-    "think", "believe", "opinion", "agree", "disagree",  # Opinion
-    "should", "would", "could",  # Hypothetical
-    "why do you", "what do you think",  # Conversational
-    "explain", "reason"  # Pure reasoning (no facts)
+    "opinion", "what do you think", "do you think", "brainstorm",
+    "rewrite", "summarize this", "translate", "grammar", "tone",
 ]
 
-# Heuristic decision thresholds
-HEURISTIC_DECISION_LOW = 0.35   # below -> likely skip retrieval
-HEURISTIC_DECISION_HIGH = 0.65  # above -> likely retrieve
-# ============================================================================
-# EVALUATION PARAMETERS
-# ============================================================================
-# Metrics configuration for comparing Baseline vs A²-RAG
-EVAL_NUM_EXAMPLES = 50  # Use 20 QA examples to reduce API quota pressure (was 50)
-EVALUATION_METRICS = ["exact_match", "f1", "retrieval_hit_rate"]  # Metrics to compute
-TOP_K_FOR_RETRIEVAL_HIT = 5  # For evaluating if correct document was in top-K
-SAVE_EVAL_DETAILS = True  # Save per-query evaluation details to CSV
-LOG_DECISION_DETAILS = True  # Log retrieval decision, confidence, and reasoning for A²-RAG
+# ---------------------------------------------------------------------------
+# Evaluation
+# ---------------------------------------------------------------------------
+EVAL_NUM_EXAMPLES = 50
 
-# ============================================================================
-# SYSTEM BEHAVIOR FLAGS
-# ============================================================================
-VERBOSE = True  # Print intermediate steps for debugging
-DETERMINISTIC = True  # Set random seeds for reproducibility
-DEBUG_MODE = False  # Log detailed info on agent decisions and retrieval
-
-# ============================================================================
-# OPENROUTER CONFIGURATION (Primary LLM Provider)
-# ============================================================================
-# OpenRouter provides access to multiple LLM providers with unified API
-# Cost-effective routing and fallback support across providers
-USE_OPENROUTER = True  # Enable OpenRouter as primary LLM provider
-OPENROUTER_MODEL = "openai/gpt-3.5-turbo"  # Model format: "provider/model-name"
-OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"  # OpenRouter API endpoint
-OPENROUTER_API_KEY = None  # Set via environment variable OPENROUTER_API_KEY
-
-
-# ============================================================================
-# DATASET PARAMETERS
-# ============================================================================
-DATASET_SIZE = 1000  # Max questions to evaluate (for full evaluation)
-EVAL_SAMPLE_SIZE = 20  # Sample size for quick validation / UI-triggered runs
+# ---------------------------------------------------------------------------
+# System flags
+# ---------------------------------------------------------------------------
+VERBOSE = False

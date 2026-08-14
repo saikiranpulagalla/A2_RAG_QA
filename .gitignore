@@ -29,6 +29,7 @@ share/python-wheels/
 MANIFEST
 
 # Virtual environments
+.venv/
 venv/
 env/
 ENV/
@@ -59,15 +60,17 @@ embeddings_cache.json
 *.pickle
 *.joblib
 
-# Results (keep only for submission if needed)
-# Uncomment if you want to ignore large result files
-# results/*.csv
-# results/*.json
-# But keep visualizations:
-# !results/*.png
+# Generated evaluation outputs
+results/*
+!results/README.md
+
+# Non-runnable historical source archives
+historical/*.zip
+historical/*.sha256
 
 # Testing
 .pytest_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 
